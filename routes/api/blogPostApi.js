@@ -8,7 +8,7 @@ router.get('/', async(req, res)=>{
         if(!blogPosts) throw new Error('couldnt find anything');
 
         const sorted = blogPosts.sort((a,b)=>{
-            return new Date(a.Date).getTime() - new Date(b.date).getTime()
+            return new Date(a.date.date).getTime() - new Date(b.date.date).getTime()
         })
 
         res.status(200).json(sorted)

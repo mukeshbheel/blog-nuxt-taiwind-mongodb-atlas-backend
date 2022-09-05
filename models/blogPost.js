@@ -22,8 +22,13 @@ const blogPostSchema = new Schema({
         required: true,
     },
     date:{
-        type: Date,
-        default: Date.now
+        type: Object,
+        default: {
+            date: Date.now,
+            day: new Date().getDay(),
+            month: new Date().getMonth(),
+            year: new Date().getFullYear()
+        }
     }
 });
 
