@@ -21,6 +21,14 @@ const blogPostSchema = new Schema({
         type: String,
         required: true,
     },
+    likes:{
+        type: Number,
+        default: 0,
+    },
+    comments:{
+        type: Array,
+        default: [],
+    },
     date:{
         type: Object,
         default: {
