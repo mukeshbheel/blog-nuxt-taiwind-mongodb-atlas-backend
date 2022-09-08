@@ -41,6 +41,17 @@ router.get('/category/:category', async(req, res) => {
     }
 })
 
+router.get('/search/:searchTerm', async(req, res) => {
+    try {
+        const {searchTerm} = req.params;
+        const searchResults = await blogPost.find({tags:searchTerm})
+        if(!searchResults) throw new Error("couldn't find anything")
+        res.status(200).json(searchResults)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
 router.post('/', async(req, res)=>{
     try {
         const newblogPost = await new blogPost(req.body).save();
